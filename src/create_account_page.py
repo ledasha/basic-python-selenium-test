@@ -1,4 +1,6 @@
 import time
+
+
 class CreateAccountPage():
 
     def __init__(self, driver):
@@ -29,6 +31,3 @@ class CreateAccountPage():
         next_button.click()
         time.sleep(1)
         assert validation_error in self.driver.page_source
-
-
-
