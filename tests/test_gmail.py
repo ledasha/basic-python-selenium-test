@@ -11,6 +11,7 @@ sign_in_page.click_create_account()
 
 user_dictionary = {'fn': 'Darya', 'ln': 'Leanovich', 'password': 'Abc123456!'}
 email_list = {'@a.a', 'a@-a.a', 'a@a@a.a', 'a@a'}
+validation_error = "Имя пользователя может включать латинские буквы (a-z), цифры (0-9) и точку (.)."
 
 create_account_page = CreateAccountPage(driver)
 create_account_page.enter_first_name(user_dictionary['fn'])
@@ -19,6 +20,6 @@ create_account_page.enter_password(user_dictionary['password'])
 create_account_page.confirm_password(user_dictionary['password'])
 
 for email in email_list:
-    create_account_page.validate_username_field(email)
+    create_account_page.validate_username_field(email, validation_error)
 
 driver.quit()

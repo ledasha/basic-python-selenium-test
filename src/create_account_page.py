@@ -22,12 +22,11 @@ class CreateAccountPage():
         confirm_password_field = self.driver.find_element_by_name("ConfirmPasswd")
         confirm_password_field.send_keys(confirm_password)
 
-    def validate_username_field(self, email):
-        validation_error = "Имя пользователя может включать латинские буквы (a-z), цифры (0-9) и точку (.)."
+    def validate_username_field(self, email, errorMessage):
         next_button = self.driver.find_element_by_id("accountDetailsNext")
         username_field = self.driver.find_element_by_id("username")
         username_field.clear()
         username_field.send_keys(email)
         next_button.click()
         time.sleep(1)
-        assert validation_error in self.driver.page_source
+        assert errorMessage in self.driver.page_source
